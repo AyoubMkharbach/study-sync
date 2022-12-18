@@ -26,3 +26,13 @@ Build an image from your Dockerfile :
 docker build --tag study-sync:1.0 .
 docker run --env PORT=8080 --publish 8080:8080 study-sync:1.0
 ```
+
+##ECR
+Login to AWS ECR (userid to be changed), tag your image and push it :
+```
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin {userid}.dkr.ecr.us-east-1.amazonaws.com
+
+docker tag 426e7b9e769f {userid}.dkr.ecr.us-east-1.amazonaws.com/study-sync
+
+docker push {userid}.dkr.ecr.us-east-1.amazonaws.com/study-sync
+```
